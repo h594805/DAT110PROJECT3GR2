@@ -45,8 +45,27 @@ public class Util {
 		
 		// Task: given an identifier, id: check whether pred < id <= node
 		
-		return false;
-
+		/*
+		 * Først sjekker vi om 'lower' er større eller lik 'upper'. Om det er tilfelle betyr det
+		 * at intervallet "wraps around" sirkelen, og derfor må vi sjekke om 'id' er mindre enn
+		 * eller lik 'upper' eller større enn eller lik 'lower' for å avgjøre om det er inne i
+		 * intervallet. Om det er tilfelle returnerer koden 'true'. Om ikkje returnerer den false.
+		 * (sjekker om 'id' befinner seg i intervallet)
+		 */
+		
+		if(lower.compareTo(upper) >= 0) {
+			return id.compareTo(upper) <= 0 || id.compareTo(lower) >= 0;
+		}
+		
+		/*
+		 * Visst intervallet ikkje "wraps around" sirkelen, sjekker vi om 'id' er 
+		 * større enn eller lik 'lower' or mindre enn eller lik 'upper'. Om det er tilfelle,
+		 * returnerer metoden 'true'. Om ikkje, returnerer den 'false'.
+		 * (sjekker om 'id' befinner seg i intervallet)
+		 */
+		
+		return id.compareTo(lower) >= 0 && id.compareTo(upper) <= 0;
+		
 	}
 	
 	public static List<String> toString(List<NodeInterface> list) throws RemoteException {
